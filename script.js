@@ -64,15 +64,14 @@ form.addEventListener("submit", function(event) {
         
         pilotStatus.innerHTML = `${pilotName.value} reporting for mission. Pilot Ready.`;
         copilotStatus.innerHTML = `${copilotName.value} reporting for mission. Co-pilot Ready.`;
-        let fuelLevelEnough = '';
-        let cargoMassLowEnough = '';
+        let fuelLevelEnough = false;
+        let cargoMassLowEnough = false; 
 
                 if (fuelLevel.value < 10000) {
                         fuelStatus.innerHTML = "There is not enough fuel for the journey.";
                         fuelLevelEnough = false;
                 }
                 else {
-                        fuelStatus.innerHTML = "Shuttle ready for launch.";
                         fuelLevelEnough = true;
                 }
                 if(cargoMass.value > 10000){
@@ -80,14 +79,15 @@ form.addEventListener("submit", function(event) {
                         cargoMassLowEnough = false;
                 }
                 else {
-                        cargoStatus.innerHTML = "Shuttle ready for launch.";
                         cargoMassLowEnough = true;
                 }
                 if (fuelLevelEnough === false || cargoMassLowEnough === false){
-                        launchStatus.style.color = red;
+                        launchStatus.style.color = 'red';
+                        launchStatus.innerHTML = "Shuttle not ready for launch.";
                 }
                 else{
-                        launchStatus.style.color = green;
+                        launchStatus.style.color = 'green';
+                        launchStatus.innerHTML = "Shuttle ready for launch.";
                 }
 
         list.style.visibility = "visible";
