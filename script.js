@@ -61,32 +61,35 @@ form.addEventListener("submit", function(event) {
         const pilotStatus = document.querySelector('#pilotStatus');
         const copilotStatus = document.querySelector('#copilotStatus');
         const launchStatus = document.querySelector('#launchStatus');
+        
+        pilotStatus.innerHTML = `${pilotName.value} reporting for mission. Pilot Ready.`;
+        copilotStatus.innerHTML = `${copilotName.value} reporting for mission. Co-pilot Ready.`;
+        let fuelLevelEnough = '';
+        let cargoMassLowEnough = '';
 
                 if (fuelLevel.value < 10000) {
-                        list.style.visibilty = "visible";
                         fuelStatus.innerHTML = "There is not enough fuel for the journey.";
-                        launchStatus.style.color = red;
+                        fuelLevelEnough = false;
                 }
                 else {
                         fuelStatus.innerHTML = "Shuttle ready for launch.";
-                        launchStatus.style.color = green;
+                        fuelLevelEnough = true;
                 }
                 if(cargoMass.value > 10000){
-                        list.style.visibilty = "visible";
                         cargoStatus.innerHTML = "There is too much mass for the shuttle to take off.";
-                        launchStatus.style.color = red;
+                        cargoMassLowEnough = false;
                 }
                 else {
                         cargoStatus.innerHTML = "Shuttle ready for launch.";
+                        cargoMassLowEnough = true;
+                }
+                if (fuelLevelEnough === false || cargoMassLowEnough === false){
+                        launchStatus.style.color = red;
+                }
+                else{
                         launchStatus.style.color = green;
                 }
 
-        if (launchStatus === "Shuttle ready for launch.") {
-                pilotStatus.innerHTML = `${pilotName.value} reporting for mission. Pilot Ready.`;
-                copilotStatus.innerHTML = `${copilotName.value} reporting for mission. Co-pilot Ready.`;
-                list.style.visibility = "visible";
-        }
-
-
+        list.style.visibility = "visible";
 });
 });
