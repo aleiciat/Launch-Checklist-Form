@@ -72,6 +72,7 @@ form.addEventListener("submit", function(event) {
                         fuelLevelEnough = false;
                 }
                 else {
+                        fuelStatus.innerHTML = "Fuel level high enough for launch.";
                         fuelLevelEnough = true;
                 }
                 if(cargoMass.value > 10000){
@@ -79,6 +80,7 @@ form.addEventListener("submit", function(event) {
                         cargoMassLowEnough = false;
                 }
                 else {
+                        cargoStatus.innerHTML = "Cargo mass low enough for launch.";
                         cargoMassLowEnough = true;
                 }
                 if (fuelLevelEnough === false || cargoMassLowEnough === false){
